@@ -3,12 +3,24 @@ import { connect } from "react-redux";
 import { postsFetch } from "../actions/posts";
 
 
+const mapStateToProps = ({ posts }) => ({
+  posts: posts.posts,
+})
+
 class Posts extends React.Component {
   componentDidMount() {
     this.props.dispatch(postsFetch());
   }
 
   render() {
+
+    const posts = this.props.posts.map(post => (
+      <div key={`posts-${post.id}`}>
+        <h2>{post.title}</h2>
+        <h3>{post.owner}</h3>
+        <img src={post.image} alt=""/>
+      </div>
+    ));
 
     return (
       <div>
@@ -18,4 +30,4 @@ class Posts extends React.Component {
   }
 }
 
-export default connect()(Posts);
+export default connect(mapStateToProps)(Posts);
