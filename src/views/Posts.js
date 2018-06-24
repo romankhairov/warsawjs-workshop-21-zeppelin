@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { postsFetch } from "../actions/posts";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { isLoading } from "../components/isLoading";
 
 
 const mapStateToProps = ({ posts }) => ({
