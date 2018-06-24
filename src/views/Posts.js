@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { postsFetch } from "../actions/posts";
 
 class Posts extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(postsFetch());
+  }
+
   render() {
 
     return (
@@ -13,4 +17,4 @@ class Posts extends React.Component {
   }
 }
 
-export default connect() (Posts);
+export default connect()(Posts);
