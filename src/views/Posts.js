@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { postsFetch } from "../actions/posts";
 
 class Posts extends React.Component {
   render() {
@@ -11,4 +13,4 @@ class Posts extends React.Component {
   }
 }
 
-export default Posts;
+export default connect() (Posts);
