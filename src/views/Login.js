@@ -3,9 +3,9 @@ import { login } from "../actions/user";
 import { connect } from "react-redux";
 import Button from '@material-ui/core/Button';
 
-
 const mapStateToProps = state => ({
-  fetching: state.user.fetching
+  fetching: state.user.fetching,
+  username: state.user.username,
 });
 
 class Login extends React.Component {
