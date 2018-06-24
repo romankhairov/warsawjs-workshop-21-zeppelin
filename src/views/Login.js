@@ -1,6 +1,7 @@
 import React from "react";
 import { login } from "../actions/user";
 import { connect } from "react-redux";
+import Button from '@material-ui/core/Button';
 
 
 const mapStateToProps = state => ({
@@ -57,7 +58,9 @@ class Login extends React.Component {
         onChange={this.onChangePassword}
         />
 
-        <button>Submit</button>
+        <Button variant="contained" color="primary">
+          Submit
+        </Button>
       </form>
     )
   } else {

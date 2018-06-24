@@ -25,7 +25,9 @@ class Posts extends React.Component {
     return (
       <div>
         <h1>Posts</h1>
+        { posts }
       </div>
+
     );
   }
 }
