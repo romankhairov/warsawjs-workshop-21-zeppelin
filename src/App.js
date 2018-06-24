@@ -17,7 +17,7 @@ class App extends Component {
         <div className="App">
             <Route path="/" component={Login} exact></Route>
             <Route path="/posts" component={Posts} exact></Route>
-            <Route path="/posts:id" component={PostById}></Route>
+            <Route path="/posts/:id" component={PostById}></Route>
         </div>
         </BrowserRouter>
       </Provider>
