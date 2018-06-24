@@ -1,8 +1,8 @@
-export const POST_FETCHING_START = "POST_FETCHING_START";
-export const POST_FETCHING_SUCCESS = "POST_FETCHING_SUCCESS";
+export const POSTS_FETCHING_START = "POSTS_FETCHING_START";
+export const POSTS_FETCHING_SUCCESS = "POSTS_FETCHING_SUCCESS";
 
-export const postsStart = () => ({ type: POST_FETCHING_START });
-export const postsSuccess = (posts) => ({ type: POST_FETCHING_SUCCESS, posts });
+export const postsStart = () => ({ type: POSTS_FETCHING_START });
+export const postsSuccess = (posts) => ({ type: POSTS_FETCHING_SUCCESS, posts });
 
 export const postsFetch = () => async dispatch => {
   dispatch(postsStart());
@@ -12,5 +12,5 @@ export const postsFetch = () => async dispatch => {
 
   console.log(response);
 
-  dispatch(postsSuccess());
+  dispatch(postsSuccess(response.posts));
 }
