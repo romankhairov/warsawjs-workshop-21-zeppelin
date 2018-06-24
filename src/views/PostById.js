@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { commentsFetch } from "../actions/comments/";
+import { postsFetch } from "../actions/posts";
+
 import { Link } from "react-router-dom";
 
 const mapStateToProps = (state, props) => ({
@@ -13,9 +15,15 @@ class PostById extends React.Component {
    componentDidMount() {
     const id = this.props.match.params.id;
     this.props.dispatch(commentsFetch(id));
+    this.props.dispatch(postsFetch());
   }
 
   render() {
+
+    if (!this.props.post) {
+      return "Loading..."
+    }
+
     const comments = this.props.comments.map(comment => (
       <div>
         <h2>{comment.body}</h2>
@@ -25,8 +33,10 @@ class PostById extends React.Component {
     console.log(PostById);
     return (
         <div>
-          <h1>PostById</h1>
+          <h2>{ this.props.post.title }</h2>
+          <h1> Comments</h1>
           { comments }
+          <img src={this.props.post.image} />
         </div>
     );
   }
