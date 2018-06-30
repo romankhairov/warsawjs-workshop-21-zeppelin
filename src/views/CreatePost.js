@@ -30,7 +30,7 @@ export default class Component extends React.Component {
     }
 
     render() {
-      <form onSubmit=this.state.text>
+      <form onSubmit=this.state>
         <h2>File</h2>
         <input type="file" onChange={this.onChangeFile} />
 
