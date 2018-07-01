@@ -1,6 +1,8 @@
 import React from "react";
+import isLoggedIn from "../comments/isLoggedIn/";
+import { postCreate } from "../actions/posts/";
 
-export default class Component extends React.Component {
+class Component extends React.Component {
     state = {
       file: null,
       text: ""
@@ -21,6 +23,8 @@ export default class Component extends React.Component {
     onSubmit = (e) => {
       e.preventDefault();
 
+      console.log(this.state.text, this.state.file);
+
       const formData = new FormData();
 
       formData.append("title" ,this.state.text);
@@ -30,15 +34,17 @@ export default class Component extends React.Component {
     }
 
     render() {
-      <form onSubmit=this.state>
+      <form onSubmit={this.state}>
         <h2>File</h2>
         <input type="file" onChange={this.onChangeFile} />
 
         <h2>Text</h2>
-        <input type="text" onChange={this.onChangeText} />
+        <input type="text" onChange={this.onChangeText} value={this.state.text}/>
 
-        <button type="submit">Submit!</button>
+        <button type="submit">Submit</button>
       </form>
     );
   }
 }
+
+export default isLoggedIn(Component);
