@@ -1,7 +1,9 @@
 import React from "react";
 import { login } from "../actions/user";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+
 
 const mapStateToProps = state => ({
   fetching: state.user.fetching,
@@ -40,22 +42,25 @@ class Login extends React.Component {
 
   render() {
 
+    if (this.props.fetching  !== "") {
+      return (<Redirect to="/posts/" />);
+    }
     if (!this.props.fetching) {
     return (
       <form onSubmit = {this.onSubmit}>
         <h1>Login</h1>
 
         <input
-        type="text"
-        placeholder="username"
-        value = {this.state.username}
-        onChange={this.onChangeUsername}
+          type="text"
+          placeholder="username"
+          value = {this.state.username}
+          onChange={this.onChangeUsername}
         />
         <input
-        type="password"
-        placeholder="password"
-        value = {this.state.password}
-        onChange={this.onChangePassword}
+          type="password"
+          placeholder="password"
+          value = {this.state.password}
+          onChange={this.onChangePassword}
         />
 
         <Button variant="contained" color="primary">
@@ -67,8 +72,8 @@ class Login extends React.Component {
     return (<div>
         Loading...
       </div>)
-}
-}
+    }
+  }
 }
 
 export default connect(mapStateToProps) (Login);
